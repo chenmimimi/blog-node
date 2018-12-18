@@ -12,6 +12,17 @@ const users = require('./routes/users')
 // error handler
 onerror(app)
 
+
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/blogger', {useNewUrlParser:true}, function(err) {
+	if (!err){
+		console.log('i had connect to mongoDB')
+	} else {
+		throw err
+	}
+});
+
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
